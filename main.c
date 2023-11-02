@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]) {
 	
-	int i,j,linha,coluna = 0;
+	int i,j,linha,coluna, jogador = 1;
 	char tabu[3][3];
 	
 	
@@ -48,10 +48,57 @@ int main(int argc, char *argv[]) {
 		
 	}
 	do{
-	printf("Digite a linha e a coluna que deseja jogar:");
+	printf("\n\nDigite a linha e a coluna que deseja jogar:");
 	scanf("%d%d",&linha,&coluna);
-	}while(linha < 0 || linha > 2 || coluna < 0 || coluna > 2);
+	}while(linha < 0 || linha > 2 || coluna < 0 || coluna > 2 || tabu[linha][coluna] != ' ');
 	
+	if(jogador == 1){
+		tabu [linha][coluna] = '0';	
+		jogador ++;
+	}else{	
+		tabu [linha][coluna] = 'X';
+		jogador=1;
+	}
+	
+	if(tabu [0][0] == '0' && tabu [0][1] == '0' && tabu [0][2] == '0' ||
+		tabu [1][0] == '0' && tabu [1][1] == '0' && tabu [1][2] == '0' ||
+		tabu [2][0] == '0' && tabu [2][1] == '0' && tabu [2][2] == '0'){
+			printf("\nParabens!!! Jogador 1 venceu!!!\n");
+		}
+		
+	if(tabu [0][0] == 'X' && tabu [0][1] == 'X' && tabu [0][2] == 'X' ||
+		tabu [1][0] == 'X' && tabu [1][1] == 'X' && tabu [1][2] == 'X' ||
+		tabu [2][0] == 'X' && tabu [2][1] == 'X' && tabu [2][2] == 'X'){
+			printf("\nParabens!!! Jogador 2 venceu!!!\n");
+		}
+		
+	if(tabu [0][0] == '0' && tabu[1][0] == '0' && tabu [2][0] == '0' ||
+		tabu [0][1] == '0' && tabu[1][1] == '0' && tabu [2][1] == '0'||
+		tabu [0][2] == '0' && tabu[1][2] == '0' && tabu [2][2] == '0'){
+			printf("\nParabens!!! Jogador 1 venceu!!!\n");
+			}	
+			
+	if(tabu [0][0] == 'X' && tabu[1][0] == 'X' && tabu [2][0] == 'X' ||
+		tabu [0][1] == 'X' && tabu[1][1] == 'X' && tabu [2][1] == 'X'||
+		tabu [0][2] == 'X' && tabu[1][2] == 'X' && tabu [2][2] == 'X'){
+			printf("\nParabens!!! Jogador 2 venceu!!!\n");
+			}	
+	
+	if(tabu [0][0] == '0' && tabu[1][1] == '0' && tabu [2][2] == '0'){
+		printf("\nParabens!!! Jogador 1 venceu!!!\n");
+	}
+	
+	if(tabu [0][0] == 'X' && tabu[1][1] == 'X' && tabu [2][2] == 'X'){
+		printf("\nParabens!!! Jogador 2 venceu!!!\n");
+	}
+	
+	if(tabu [0][2] == '0' && tabu[1][1] == '0' && tabu [2][0] == '0'){
+		printf("\nParabens!!! Jogador 1 venceu!!!\n");
+	}
+	
+	if(tabu [0][2] == 'X' && tabu[1][1] == 'X' && tabu [2][0] == 'X'){
+		printf("\nParabens!!! Jogador 2 venceu!!!\n");
+	}
 	
 	
 	return 0;
